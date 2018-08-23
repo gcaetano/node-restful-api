@@ -13,6 +13,7 @@ const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 

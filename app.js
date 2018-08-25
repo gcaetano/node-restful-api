@@ -4,9 +4,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 
-const productsRoutes = require('./api/routes/product');
-const ordersRoutes = require('./api/routes/order');
-const usersRoutes = require('./api/routes/user');
+const productsRoutes = require('./api/routes/products');
+const ordersRoutes = require('./api/routes/orders');
+const usersRoutes = require('./api/routes/users');
 
 mongoose.connect("mongodb://localhost:27017/node-shop-api", { useNewUrlParser: true });
 

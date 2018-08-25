@@ -1,12 +1,9 @@
-const express = require('express');
-const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
 const User = require('../models/user');
 
-router.post('/singup', (req, res, next) => {
+exports.singup = (req, res, next) => {
     User.find({ email: req.body.email })
         .exec()
         .then(user => {
@@ -41,9 +38,9 @@ router.post('/singup', (req, res, next) => {
                 });
             }
         })
-});
+}
 
-router.post('/login', (req, res, next) => {
+exports.login = (req, res, next) => {
     User.find({ email: req.body.email })
         .exec()
         .then(user => {
@@ -85,9 +82,9 @@ router.post('/login', (req, res, next) => {
             console.log(err);
             res.status(500).json({ error: err })
         });
-});
+}
 
-router.delete('/:userId', (req, res, next) => {
+exports.delete = (req, res, next) => {
     User.remove({ _id: req.body.userId })
         .exec()
         .then(result => {
@@ -99,6 +96,4 @@ router.delete('/:userId', (req, res, next) => {
             console.log(err);
             res.status(500).json({ error: err })
         });
-});
-
-module.exports = router;
+};
